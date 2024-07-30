@@ -1,4 +1,4 @@
-> Kemal:
+> Shibooster:
 <!-- fan.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -42,11 +42,11 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 
 def start(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(
-        "Tam ekran animasyonu görmek için aşağıdaki linke tıklayın: https://yourdomain.com/fan.html"
+        "Click for Game!: (https://github.com/kemalonline/kemalonline)"
     )
 
 def main() -> None:
-    updater = Updater("YOUR_TELEGRAM_BOT_TOKEN")
+    updater = Updater("7431179012:AAEPBg8wwSv-pMyQPTQb_MWuAR0dGVygf2U")
 
     dispatcher = updater.dispatcher
 
