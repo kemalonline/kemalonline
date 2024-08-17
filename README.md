@@ -1,59 +1,33 @@
-> Shibooster:
-<!-- fan.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fan Animation</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TouchScore : MonoBehaviour
+{
+    public Text scoreText; // Puanı gösterecek UI Text bileşeni
+    private int score = 0;
+
+    void Start()
+    {
+        UpdateScoreText();
+    }
+
+    void Update()
+    {
+        // Eğer ekrana dokunulduysa
+        if (Input.GetMouseButtonDown(0)) // Mobilde dokunuş, bilgisayarda mouse tıklaması olarak çalışır
+        {
+            AddScore();
         }
-        .fan {
-            width: 100px;
-            height: 100px;
-            border: 10px solid #ccc;
-            border-top: 10px solid #3498db;
-            border-radius: 50%;
-            animation: spin 2s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <div class="fan"></div>
-</body>
-</html>
+    }
 
-> Kemal:
-from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
+    void AddScore()
+    {
+        score++; // Puanı artır
+        UpdateScoreText();
+    }
 
-def start(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(
-        "Click for Game!: (https://github.com/kemalonline/kemalonline)"
-    )
-
-def main() -> None:
-    updater = Updater("7431179012:AAEPBg8wwSv-pMyQPTQb_MWuAR0dGVygf2U")
-
-    dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(CommandHandler("start", start))
-
-    updater.start_polling()
-    updater.idle()
-
-if name == 'main':
-    main()
+    void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
+}
